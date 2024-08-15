@@ -60,11 +60,11 @@ export default function Home() {
     await updateInventory()
   }
   
-    const removeItem = async (item) => {
-      const docRef = doc(collection(firestore, "inventory"), item);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        await updateInventory();
+  const removeItem = async (item) => {
+    const docRef = doc(collection(firestore, "inventory"), item);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+       await deleteDoc(docRef);
       }
       await updateInventory();
     }
